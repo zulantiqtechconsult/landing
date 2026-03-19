@@ -1,0 +1,118 @@
+<section class="contact" id="contact">
+  <div class="container">
+    <h2 class="section-title">
+      {{ currentLang === 'es' ? 'HABLEMOS DE TU PROYECTO' : "LET'S TALK ABOUT YOUR PROJECT" }}
+    </h2>
+    <p class="section-subtitle">
+      {{ currentLang === 'es' 
+        ? 'Cuéntanos tu visión y te responderemos en menos de 24 horas'
+        : 'Share your vision and we will respond in less than 24 hours' }}
+    </p>
+    
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">
+            {{ currentLang === 'es' ? 'Nombre *' : 'Name *' }}
+          </label>
+          <input 
+            type="text" 
+            id="name" 
+            formControlName="name"
+            [placeholder]="currentLang === 'es' ? 'Tu nombre' : 'Your name'"
+            [class.error]="f['name'].invalid && f['name'].touched">
+          <div class="error-message" *ngIf="f['name'].invalid && f['name'].touched">
+            {{ currentLang === 'es' ? 'El nombre es requerido' : 'Name is required' }}
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="company">
+            {{ currentLang === 'es' ? 'Empresa' : 'Company' }}
+          </label>
+          <input 
+            type="text" 
+            id="company" 
+            formControlName="company"
+            [placeholder]="currentLang === 'es' ? 'Nombre de tu empresa' : 'Your company name'">
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">
+            {{ currentLang === 'es' ? 'Email *' : 'Email *' }}
+          </label>
+          <input 
+            type="email" 
+            id="email" 
+            formControlName="email"
+            [placeholder]="currentLang === 'es' ? 'tu@email.com' : 'your@email.com'"
+            [class.error]="f['email'].invalid && f['email'].touched">
+          <div class="error-message" *ngIf="f['email'].invalid && f['email'].touched">
+            {{ currentLang === 'es' ? 'Email válido requerido' : 'Valid email required' }}
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="service">
+            {{ currentLang === 'es' ? 'Servicio *' : 'Service *' }}
+          </label>
+          <select 
+            id="service" 
+            formControlName="service"
+            [class.error]="f['service'].invalid && f['service'].touched">
+            <option value="">{{ currentLang === 'es' ? 'Selecciona un servicio' : 'Select a service' }}</option>
+            <option value="ai">{{ currentLang === 'es' ? 'IA & Machine Learning' : 'AI & Machine Learning' }}</option>
+            <option value="cloud">Cloud & DevOps</option>
+            <option value="security">{{ currentLang === 'es' ? 'Ciberseguridad' : 'Cybersecurity' }}</option>
+            <option value="fullstack">{{ currentLang === 'es' ? 'Desarrollo Full-Stack' : 'Full-Stack Development' }}</option>
+            <option value="blockchain">Blockchain & Web3</option>
+            <option value="analytics">Data Analytics</option>
+            <option value="other">{{ currentLang === 'es' ? 'Otro' : 'Other' }}</option>
+          </select>
+          <div class="error-message" *ngIf="f['service'].invalid && f['service'].touched">
+            {{ currentLang === 'es' ? 'Selecciona un servicio' : 'Select a service' }}
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="message">
+          {{ currentLang === 'es' ? 'Mensaje *' : 'Message *' }}
+        </label>
+        <textarea 
+          id="message" 
+          formControlName="message"
+          rows="6"
+          [placeholder]="currentLang === 'es' ? 'Cuéntanos sobre tu proyecto...' : 'Tell us about your project...'"
+          [class.error]="f['message'].invalid && f['message'].touched"></textarea>
+        <div class="error-message" *ngIf="f['message'].invalid && f['message'].touched">
+          {{ currentLang === 'es' ? 'Mensaje requerido (mínimo 10 caracteres)' : 'Message required (minimum 10 characters)' }}
+        </div>
+      </div>
+      
+      <div class="success-message" *ngIf="submitSuccess">
+        ✓ {{ currentLang === 'es' 
+          ? '¡Mensaje enviado! Te contactaremos pronto.'
+          : 'Message sent! We will contact you soon.' }}
+      </div>
+      
+      <div class="error-message" *ngIf="submitError">
+        {{ submitError }}
+      </div>
+      
+      <button 
+        type="submit" 
+        class="submit-btn"
+        [disabled]="isSubmitting">
+        <span *ngIf="!isSubmitting">
+          {{ currentLang === 'es' ? 'Enviar Mensaje' : 'Send Message' }}
+        </span>
+        <span *ngIf="isSubmitting">
+          {{ currentLang === 'es' ? 'Enviando...' : 'Sending...' }}
+        </span>
+      </button>
+    </form>
+  </div>
+</section>

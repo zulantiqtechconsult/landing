@@ -1,0 +1,36 @@
+<nav>
+  <div class="nav-logo">
+    <img src="assets/images/logo.svg" alt="ZULANTIQ Logo">
+  </div>
+  
+  <ul class="nav-links">
+    <li><a (click)="scrollTo('services')">{{ currentLang === 'es' ? 'SERVICIOS' : 'SERVICES' }}</a></li>
+    <li><a (click)="scrollTo('why')">{{ currentLang === 'es' ? 'POR QUÉ' : 'WHY' }}</a></li>
+    <li><a (click)="scrollTo('locations')">{{ currentLang === 'es' ? 'UBICACIONES' : 'LOCATIONS' }}</a></li>
+    <li><a (click)="scrollTo('contact')">{{ currentLang === 'es' ? 'CONTACTO' : 'CONTACT' }}</a></li>
+  </ul>
+  
+  <div class="lang-toggle">
+    <button 
+      class="lang-btn" 
+      [class.active]="currentLang === 'es'"
+      (click)="setLanguage('es')">ES</button>
+    <button 
+      class="lang-btn" 
+      [class.active]="currentLang === 'en'"
+      (click)="setLanguage('en')">EN</button>
+  </div>
+  
+  <div class="hamburger" (click)="toggleMobileMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" [class.open]="mobileMenuOpen">
+  <a (click)="scrollTo('services')">{{ currentLang === 'es' ? 'SERVICIOS' : 'SERVICES' }}</a>
+  <a (click)="scrollTo('why')">{{ currentLang === 'es' ? 'POR QUÉ' : 'WHY' }}</a>
+  <a (click)="scrollTo('locations')">{{ currentLang === 'es' ? 'UBICACIONES' : 'LOCATIONS' }}</a>
+  <a (click)="scrollTo('contact')">{{ currentLang === 'es' ? 'CONTACTO' : 'CONTACT' }}</a>
+</div>

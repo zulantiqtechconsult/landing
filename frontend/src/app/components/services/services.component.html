@@ -1,0 +1,24 @@
+<section class="services" id="services">
+  <div class="container">
+    <h2 class="section-title">
+      {{ currentLang === 'es' ? 'NUESTROS SERVICIOS' : 'OUR SERVICES' }}
+    </h2>
+    <p class="section-subtitle">
+      {{ currentLang === 'es' 
+        ? 'Tecnología de vanguardia para impulsar tu negocio'
+        : 'Cutting-edge technology to drive your business' }}
+    </p>
+    
+    <div class="services-grid">
+      <div class="service-card" *ngFor="let service of services">
+        <div class="service-icon">{{ service.icon }}</div>
+        <h3 class="service-title">
+          {{ currentLang === 'es' ? service.titleEs : service.titleEn }}
+        </h3>
+        <p class="service-desc">
+          {{ currentLang === 'es' ? service.descEs : service.descEn }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

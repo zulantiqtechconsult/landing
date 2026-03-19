@@ -1,0 +1,32 @@
+<section class="startup" id="startup">
+  <div class="container">
+    <div class="startup-content">
+      <h2 class="startup-title">
+        {{ currentLang === 'es' 
+          ? '¿LISTO PARA TRANSFORMAR TU NEGOCIO?' 
+          : 'READY TO TRANSFORM YOUR BUSINESS?' }}
+      </h2>
+      <p class="startup-text" *ngIf="currentLang === 'es'">
+        Únete a decenas de empresas que ya confían en ZULANTIQ para sus proyectos tecnológicos más críticos. 
+        Desde startups innovadoras hasta corporaciones establecidas, ayudamos a convertir visiones en realidad digital.
+      </p>
+      <p class="startup-text" *ngIf="currentLang === 'en'">
+        Join dozens of companies that already trust ZULANTIQ for their most critical technology projects. 
+        From innovative startups to established corporations, we help turn visions into digital reality.
+      </p>
+      
+      <div class="stats-grid">
+        <div class="stat-item" *ngFor="let stat of stats">
+          <div class="stat-value">{{ stat.value }}</div>
+          <div class="stat-label">
+            {{ currentLang === 'es' ? stat.labelEs : stat.labelEn }}
+          </div>
+        </div>
+      </div>
+      
+      <button class="startup-cta" (click)="scrollTo('contact')">
+        {{ currentLang === 'es' ? 'Iniciar Conversación' : 'Start Conversation' }}
+      </button>
+    </div>
+  </div>
+</section>

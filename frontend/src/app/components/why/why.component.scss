@@ -1,0 +1,109 @@
+.why {
+  padding: 100px 40px;
+  background: linear-gradient(180deg, transparent, rgba(30, 200, 200, 0.03), transparent);
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  margin: 0 0 16px;
+  text-transform: uppercase;
+}
+
+.section-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.1rem;
+  text-align: center;
+  color: var(--silver);
+  margin: 0 0 60px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.why-card {
+  text-align: center;
+  padding: 40px 30px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: rgba(30, 200, 200, 0.3);
+    background: rgba(255, 255, 255, 0.04);
+  }
+}
+
+.why-icon {
+  font-size: 3.5rem;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+}
+
+.why-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--white);
+  margin: 0 0 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.why-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--silver);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .why {
+    padding: 80px 20px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .why-card {
+    padding: 30px 24px;
+  }
+
+  .why-icon {
+    font-size: 3rem;
+    height: 70px;
+  }
+}

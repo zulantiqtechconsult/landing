@@ -1,0 +1,36 @@
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <div class="hero-logo">
+      <div class="logo-ring"></div>
+      <div class="logo-ring"></div>
+      <div class="logo-ring"></div>
+      <img src="assets/images/logo.svg" alt="ZULANTIQ">
+    </div>
+    
+    <h1 class="hero-title" *ngIf="currentLang === 'es'">
+      TRANSFORMACIÓN<br>
+      <span class="highlight">DIGITAL GLOBAL</span>
+    </h1>
+    
+    <h1 class="hero-title" *ngIf="currentLang === 'en'">
+      GLOBAL<br>
+      <span class="highlight">DIGITAL TRANSFORMATION</span>
+    </h1>
+    
+    <p class="hero-subtitle" *ngIf="currentLang === 'es'">
+      Consultoría tecnológica de vanguardia en tres continentes
+    </p>
+    
+    <p class="hero-subtitle" *ngIf="currentLang === 'en'">
+      Cutting-edge technology consulting across three continents
+    </p>
+    
+    <button class="cta-btn" (click)="scrollTo('contact')">
+      {{ currentLang === 'es' ? 'Iniciar Proyecto' : 'Start Project' }}
+    </button>
+  </div>
+  
+  <div class="scroll-indicator">
+    <div class="mouse"></div>
+  </div>
+</section>

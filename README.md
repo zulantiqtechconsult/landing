@@ -1,310 +1,284 @@
-# ZULANTIQ Landing Page - Email Backend
+# ZULANTIQ Landing Page
 
-Complete Node.js email solution for the ZULANTIQ Tech Consult landing page contact form, configured for Hostinger.com hosting.
+Modern full-stack landing page built with **Angular 17** and **Node.js/Express**.
 
----
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 18+ and npm
+
+### Installation & Development
+
+**1. Clone and install backend:**
+```bash
+git clone https://github.com/zulantiqtechconsult/landing.git
+cd landing
+npm install
+```
+
+**2. Install frontend:**
+```bash
+cd frontend
+npm install
+cd ..
+```
+
+**3. Configure environment:**
+```bash
+cp .env.example .env
+# Edit .env with your SMTP credentials
+# Minimum: ALLOWED_ORIGINS=http://localhost:4200
+```
+
+**4. Start development servers:**
+
+**Terminal 1 - Backend:**
+```bash
+npm start
+# Runs on http://localhost:3000
+```
+
+**Terminal 2 - Frontend:**
+```bash
+cd frontend
+npm start
+# Runs on http://localhost:4200
+```
+
+**5. Open browser:**
+```
+http://localhost:4200
+```
 
 ## 📁 Project Structure
 
 ```
-Landing/
-├── zulantiq_landing.html    # Main landing page (Frontend)
-├── server.js                # Node.js backend server
-├── package.json             # Dependencies
-├── .env.example             # Environment variables template
-├── .env                     # Actual credentials (DO NOT COMMIT)
-├── .gitignore              # Git ignore rules
-├── DEPLOYMENT.md           # Full deployment guide
-└── README.md               # This file
+landing/
+├── frontend/               # Angular 17 Application
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── components/        # Page components
+│   │   │   │   ├── navbar/        # Navigation with language toggle
+│   │   │   │   ├── hero/          # Hero section with animated logo
+│   │   │   │   ├── services/      # Services grid
+│   │   │   │   ├── why/           # Why choose us
+│   │   │   │   ├── locations/     # Global locations
+│   │   │   │   ├── startup/       # CTA with stats
+│   │   │   │   ├── contact/       # Contact form
+│   │   │   │   └── footer/        # Footer
+│   │   │   ├── services/          # Angular services
+│   │   │   │   ├── api.service.ts         # HTTP API calls
+│   │   │   │   └── language.service.ts    # ES/EN toggle
+│   │   │   ├── models/            # TypeScript interfaces
+│   │   │   │   └── models.ts
+│   │   │   ├── app.module.ts      # Root module
+│   │   │   └── app-routing.module.ts
+│   │   ├── assets/
+│   │   │   └── images/            # Static images
+│   │   ├── index.html
+│   │   └── styles.scss            # Global styles
+│   ├── angular.json
+│   ├── tsconfig.json
+│   ├── package.json
+│   └── README.md                  # Frontend docs
+│
+├── server.js               # Express Backend
+├── package.json            # Backend dependencies
+├── .env.example           # Environment template
+├── .env                   # Your credentials (git ignored)
+├── SETUP.md              # Complete setup guide
+├── STRUCTURE.md          # Architecture docs
+└── docs/                 # Additional documentation
+    ├── DEPLOYMENT.md
+    ├── QUICKSTART-HOSTINGER.md
+    └── SAME-DOMAIN-DEPLOYMENT.md
 ```
 
----
+## ✨ Features
 
-## 🚀 Quick Start (Local Development)
+### Frontend (Angular 17)
+- ✅ **Component Architecture**: Modular, reusable components
+- ✅ **Responsive Design**: Mobile-first, works on all devices
+- ✅ **Multi-language**: Spanish/English toggle with localStorage
+- ✅ **Reactive Forms**: Contact form with validation
+- ✅ **Smooth Animations**: Modern UI/UX with CSS animations
+- ✅ **Type Safety**: Full TypeScript coverage
+- ✅ **API Integration**: RxJS observables with retry logic
+- ✅ **Smooth Scrolling**: Anchor navigation between sections
 
-### 1. Install Dependencies
+### Backend (Node.js/Express)
+- ✅ **RESTful API**: `/api/health`, `/api/contact`
+- ✅ **Email Integration**: Nodemailer with SMTP
+- ✅ **Rate Limiting**: 3 requests per 15 minutes
+- ✅ **CORS Protection**: Configurable allowed origins
+- ✅ **Input Validation**: Email format validation
+- ✅ **Auto-Reply**: Confirmation emails to users
+- ✅ **Admin Notifications**: Form submissions to admin email
+- ✅ **Error Handling**: Comprehensive error responses
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **Framework**: Angular 17.0.0
+- **Language**: TypeScript 5.2.2
+- **Reactive**: RxJS 7.8.0
+- **Styles**: SCSS with CSS custom properties
+- **Forms**: Reactive Forms with validators
+- **HTTP**: HttpClient with interceptors
+
+### Backend
+- **Runtime**: Node.js 18+
+- **Framework**: Express 4.18
+- **Email**: Nodemailer 6.9
+- **Security**: CORS, express-rate-limit
+- **Config**: dotenv
+
+## 📝 Scripts
+
+### Backend (from project root)
 ```bash
-npm install
+npm start              # Start Express server (port 3000)
+npm run check-config   # Verify email configuration
+node test-email.js     # Test email sending
 ```
 
-### 2. Configure Environment
+### Frontend (from frontend/)
 ```bash
-# Copy example config
-cp .env.example .env
-
-# Edit .env with your credentials
-nano .env
+npm start              # Dev server (localhost:4200)
+npm run build          # Build for production
+npm run build:prod     # Optimized production build
 ```
 
-### 3. Start Server
-```bash
-# Development (with auto-reload)
-npm run dev
+## 🔧 Configuration
 
-# Production
-npm start
-```
+### Environment Variables (.env)
 
-### 4. Test
-- Frontend: Open `zulantiq_landing.html` in browser
-- API Health: `http://localhost:3000/api/health`
-- Submit test form
-
----
-
-## 🌐 Features
-
-### Backend (server.js)
-- ✅ Express.js server
-- ✅ Nodemailer for email sending
-- ✅ CORS protection
-- ✅ Rate limiting (3 requests per 15 minutes)
-- ✅ Input validation
-- ✅ Professional HTML email templates
-- ✅ Auto-reply to customers
-- ✅ Admin notification emails
-- ✅ Hostinger SMTP optimized
-
-### Frontend (HTML Form)
-- ✅ Async form submission
-- ✅ Loading states
-- ✅ Success/error messages
-- ✅ Bilingual support (ES/EN)
-- ✅ No page refresh
-- ✅ Client-side validation
-
----
-
-## 📧 Email Configuration (Hostinger)
-
-### Required Environment Variables:
+Create `.env` from `.env.example`:
 
 ```env
-SMTP_HOST=mail.zulantiq.com          # Your Hostinger mail server
-SMTP_PORT=465                         # 465 (SSL) or 587 (TLS)
-SMTP_SECURE=true                      # true for 465, false for 587
-SMTP_USER=contacto@zulantiq.com      # Your email account
-SMTP_PASS=your-strong-password        # Email password
-EMAIL_TO=info@zulantiq.com           # Where to receive submissions
+# Server
+PORT=3000
+NODE_ENV=development
+
+# CORS - Add Angular dev server
+ALLOWED_ORIGINS=http://localhost:4200,https://zulantiq.com
+
+# SMTP Configuration (Hostinger)
+SMTP_HOST=mail.zulantiq.com
+SMTP_PORT=465
+SMTP_SECURE=true
+SMTP_USER=contact@zulantiq.com
+SMTP_PASS=your_password_here
+
+# Email Settings
+EMAIL_TO=info@zulantiq.com
+EMAIL_FROM_NAME=ZULANTIQ
+SEND_AUTO_REPLY=true
 ```
 
-### Get Hostinger SMTP Settings:
-1. Login to Hostinger hPanel
-2. Go to **Emails** > **Email Accounts**
-3. Click on your email account
-4. Click **Configure Email Client**
-5. Copy SMTP settings
+See [SETUP.md](SETUP.md) for detailed configuration guide.
 
----
+## 🚢 Production Deployment
 
-## 🔐 Security Features
+### Option 1: Same Domain (Recommended)
 
-- **Environment Variables**: Sensitive data in `.env` (not committed)
-- **Rate Limiting**: Prevents spam (3 requests/15min per IP)
-- **CORS**: Only allows requests from specified domains
-- **Input Validation**: Email format, required fields
-- **HTTPS**: Recommended for production
-- **Password Protection**: SMTP credentials secured
+Deploy both frontend and backend on same domain:
 
----
+1. Build frontend:
+   ```bash
+   cd frontend
+   npm run build:prod
+   ```
 
-## 📊 API Endpoints
+2. Serve static files from Express
 
-### `GET /api/health`
-Health check endpoint
-```json
-{
-  "status": "ok",
-  "timestamp": "2026-03-19T10:30:00.000Z"
-}
-```
+3. Deploy to Hostinger/VPS
 
-### `POST /api/contact`
-Submit contact form
+See [docs/SAME-DOMAIN-DEPLOYMENT.md](docs/SAME-DOMAIN-DEPLOYMENT.md)
 
-**Request Body:**
-```json
-{
-  "name": "Juan Pérez",
-  "company": "Mi Empresa S.A.S.",
-  "email": "juan@miempresa.com",
-  "service": "digital",
-  "message": "Necesito consultoría..."
-}
-```
+### Option 2: Separate Deployment
 
-**Success Response:**
-```json
-{
-  "success": true,
-  "message": "Mensaje enviado correctamente. Te contactaremos pronto."
-}
-```
+- **Frontend**: Netlify, Vercel, or static hosting
+- **Backend**: Hostinger, VPS, or cloud platform
 
-**Error Response:**
-```json
-{
-  "success": false,
-  "error": "Por favor completa todos los campos requeridos."
-}
-```
+Update API URL in:
+- `frontend/src/app/services/api.service.ts`
 
----
+## 🔐 Security
+
+- ✅ CORS whitelist for allowed origins
+- ✅ Rate limiting to prevent spam
+- ✅ Environment variables for secrets
+- ✅ Input validation on backend
+- ✅ Email sanitization
+- ✅ No inline credentials
+
+## 📚 Documentation
+
+- **[SETUP.md](SETUP.md)** - Complete setup and configuration guide
+- **[frontend/README.md](frontend/README.md)** - Angular app documentation
+- **[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)** - Production deployment
+- **[docs/QUICKSTART-HOSTINGER.md](docs/QUICKSTART-HOSTINGER.md)** - Hostinger setup
+- **[STRUCTURE.md](STRUCTURE.md)** - Project architecture
+
+## 🌍 Global Presence
+
+ZULANTIQ operates in three continents:
+
+- 🇪🇸 **Spain** - Madrid (CET UTC+1)
+- 🇺🇸 **USA** - Miami, FL (EST UTC-5)
+- 🇦🇺 **Australia** - Sydney (AEST UTC+10)
+
+24/7 support across all timezones.
+
+## 📧 Contact
+
+- **Email**: info@zulantiq.com
+- **Website**: https://zulantiq.com
+- **GitHub**: https://github.com/zulantiqtechconsult
+- **LinkedIn**: https://linkedin.com/company/zulantiq
 
 ## 🧪 Testing
 
-### Test SMTP Connection
+### Test Backend Email
 ```bash
-node server.js
-# Should see: ✅ SMTP Server ready to send emails
+node test-email.js
 ```
 
-### Test Health Endpoint
+### Test API Endpoint
 ```bash
 curl http://localhost:3000/api/health
 ```
 
 ### Test Contact Form
-```bash
-curl -X POST http://localhost:3000/api/contact \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Test User",
-    "email": "test@example.com",
-    "service": "digital",
-    "message": "Test message"
-  }'
-```
+1. Start both servers (backend + frontend)
+2. Navigate to http://localhost:4200
+3. Fill contact form
+4. Submit and check admin email
 
----
+## 🐛 Troubleshooting
 
-## 📦 Deployment
+### Backend won't start
+- Check `.env` file exists with correct values
+- Verify port 3000 is not in use: `netstat -ano | findstr :3000`
+- Check SMTP credentials are correct
 
-**Full deployment guide**: See [DEPLOYMENT.md](DEPLOYMENT.md)
+### Frontend can't connect to backend
+- Verify backend is running on port 3000
+- Check CORS is configured: `ALLOWED_ORIGINS=http://localhost:4200`
+- Check browser console for CORS errors
 
-### Quick Deploy to Hostinger:
+### Email not sending
+- Run `node test-email.js` to verify SMTP config
+- Check Hostinger SMTP settings in hPanel
+- Verify firewall allows outbound port 465/587
 
-1. **Upload files** via SSH/FTP
-2. **Configure `.env`** with Hostinger SMTP
-3. **Install dependencies**: `npm install`
-4. **Start with PM2**: `pm2 start server.js`
-5. **Configure proxy** in `.htaccess`
-6. **Test form** on live site
-
----
-
-## 🔧 Configuration Options
-
-### Change Rate Limit
-Edit `server.js`:
-```javascript
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // Change this
-  max: 3, // Change this
-  ...
-});
-```
-
-### Disable Auto-Reply
-Set in `.env`:
-```env
-SEND_AUTO_REPLY=false
-```
-
-### Change Email Templates
-Edit HTML templates in `server.js`:
-- `mailOptionsAdmin` (admin notification)
-- `mailOptionsClient` (customer auto-reply)
-
----
-
-## 🐛 Common Issues
-
-### "SMTP Connection Error"
-- ✅ Check SMTP credentials in `.env`
-- ✅ Verify email account is active in Hostinger
-- ✅ Try port 587 instead of 465
-- ✅ Check if SMTP is enabled for your plan
-
-### "Cannot POST /api/contact"
-- ✅ Server not running → Start with `npm start`
-- ✅ CORS issue → Add domain to `ALLOWED_ORIGINS`
-- ✅ Proxy not configured → Check `.htaccess`
-
-### "Rate limit exceeded"
-- ✅ Wait 15 minutes
-- ✅ Test from different IP
-- ✅ Increase limit in `server.js`
-
-### Form not submitting
-- ✅ Check browser console for errors
-- ✅ Verify API_URL in HTML matches server
-- ✅ Check CORS configuration
-
----
-
-## 📝 Dependencies
-
-```json
-{
-  "express": "^4.18.2",         // Web server
-  "nodemailer": "^6.9.7",       // Email sending
-  "cors": "^2.8.5",             // CORS protection
-  "dotenv": "^16.3.1",          // Environment variables
-  "express-rate-limit": "^7.1.5" // Rate limiting
-}
-```
-
----
-
-## 🔄 Updates
-
-### Update Dependencies
-```bash
-npm update
-npm audit fix
-```
-
-### Update Code
-```bash
-git pull
-npm install
-pm2 restart zulantiq-backend
-```
-
----
-
-## 📞 Support
-
-**Email**: contacto@zulantiq.com  
-**Website**: https://zulantiq.com  
-**Location**: Medellín & Bogotá, Colombia
-
----
+See [SETUP.md](SETUP.md) for more troubleshooting.
 
 ## 📄 License
 
-Proprietary - ZULANTIQ Tech Consult S.A.S. © 2026
+Copyright © 2025 ZULANTIQ Tech Consult. All rights reserved.
 
 ---
 
-## ✅ Checklist Before Going Live
-
-- [ ] `.env` configured with real credentials
-- [ ] `.env` added to `.gitignore`
-- [ ] Tested SMTP connection
-- [ ] Tested form submission locally
-- [ ] Dependencies installed on server
-- [ ] Node.js app started (PM2 or Hostinger panel)
-- [ ] Reverse proxy configured
-- [ ] SSL certificate active (HTTPS)
-- [ ] Test email received
-- [ ] Auto-reply working (if enabled)
-- [ ] Rate limiting working
-- [ ] CORS configured for production domain
-- [ ] Error logging working
-- [ ] Mobile form tested
-
----
-
-**🎉 Ready to receive customer inquiries!**
+**Built with ❤️ by ZULANTIQ**

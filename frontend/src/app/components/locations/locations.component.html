@@ -1,0 +1,32 @@
+<section class="locations" id="locations">
+  <div class="container">
+    <h2 class="section-title">
+      {{ currentLang === 'es' ? 'NUESTRAS UBICACIONES' : 'OUR LOCATIONS' }}
+    </h2>
+    <p class="section-subtitle">
+      {{ currentLang === 'es' 
+        ? 'Presencia estratégica en tres continentes para servicio 24/7'
+        : 'Strategic presence on three continents for 24/7 service' }}
+    </p>
+    
+    <div class="locations-grid">
+      <div class="location-card" *ngFor="let location of locations">
+        <div class="location-flag">{{ location.flag }}</div>
+        <h3 class="location-country">{{ location.country }}</h3>
+        <p class="location-city">{{ location.city }}</p>
+        <p class="location-timezone">{{ location.timezone }}</p>
+        <p class="location-desc">
+          {{ currentLang === 'es' ? location.descEs : location.descEn }}
+        </p>
+      </div>
+    </div>
+    
+    <div class="global-coverage">
+      <p class="coverage-text">
+        {{ currentLang === 'es' 
+          ? '🌐 Cobertura global · Soporte en tu zona horaria · Respuesta inmediata'
+          : '🌐 Global coverage · Support in your timezone · Immediate response' }}
+      </p>
+    </div>
+  </div>
+</section>

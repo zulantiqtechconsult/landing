@@ -1,0 +1,24 @@
+<section class="why" id="why">
+  <div class="container">
+    <h2 class="section-title">
+      {{ currentLang === 'es' ? '¿POR QUÉ ZULANTIQ?' : 'WHY ZULANTIQ?' }}
+    </h2>
+    <p class="section-subtitle">
+      {{ currentLang === 'es' 
+        ? 'La combinación perfecta de experiencia global y excelencia técnica'
+        : 'The perfect combination of global experience and technical excellence' }}
+    </p>
+    
+    <div class="why-grid">
+      <div class="why-card" *ngFor="let item of whyItems">
+        <div class="why-icon">{{ item.icon }}</div>
+        <h3 class="why-title">
+          {{ currentLang === 'es' ? item.titleEs : item.titleEn }}
+        </h3>
+        <p class="why-desc">
+          {{ currentLang === 'es' ? item.descEs : item.descEn }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
